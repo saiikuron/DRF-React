@@ -15,16 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
+from django.views.generic import RedirectView
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('users/', include('accounts.urls')),
-    path('rest-auth/', include('rest_auth.urls')),
-    path('registration/', include('rest_auth.registration.urls')),
-    # path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    # path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('admin', admin.site.urls),
+    path('dj-rest-auth', include('dj_rest_auth.urls')),
+    path('dj-rest-auth/registration', include('dj_rest_auth.registration.urls')),
+    path('account', include('allauth.urls')),
+    path('accounts/profile/$', RedirectView.as_view(url='/',
+                                                    permanent=True), name='profile-redirect'),
 ]

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "793a7c2021611a126a5157d4354c627043377c666d6073a18ec9736c4b55ccff"
+            "sha256": "ab0e441ce39a35f3e154cc37912bf7c1655b6fe014de67f089da61e8db2f6db3"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -18,10 +18,10 @@
     "default": {
         "certifi": {
             "hashes": [
-                "sha256:1d987a998c75633c40847cc966fcf5904906c920a7f17ef374f5aa4282abd304",
-                "sha256:51fcb31174be6e6664c5f69e3e1691a2d72a1a12e90f872cbdb1567eb47b6519"
+                "sha256:5ad7e9a056d25ffa5082862e36f119f7f7cec6457fa07ee2f8c339814b80c9b1",
+                "sha256:9cd41137dc19af6a5e03b630eefe7d1f458d964d406342dd3edf625839b944cc"
             ],
-            "version": "==2020.4.5.1"
+            "version": "==2020.4.5.2"
         },
         "chardet": {
             "hashes": [
@@ -36,6 +36,13 @@
                 "sha256:f684034d135af4c6cbb949b8a4d2ed61634515257a67299e5f940fbaa34377f5"
             ],
             "version": "==0.6.0"
+        },
+        "dj-rest-auth": {
+            "hashes": [
+                "sha256:6005de13c2de921e61e40f54f20bbeca17164b9471e3b38ccff79e06fceadf49"
+            ],
+            "index": "pypi",
+            "version": "==1.0.7"
         },
         "django": {
             "hashes": [
@@ -59,13 +66,6 @@
             ],
             "index": "pypi",
             "version": "==3.3.0"
-        },
-        "django-rest-auth": {
-            "hashes": [
-                "sha256:f11e12175dafeed772f50d740d22caeab27e99a3caca24ec65e66a8d6de16571"
-            ],
-            "index": "pypi",
-            "version": "==0.9.5"
         },
         "djangorestframework": {
             "hashes": [
@@ -131,13 +131,6 @@
                 "sha256:b4261601a71fd721a8bd6d7aa1cc1d6a8a93b4a9f5e96626f8e4d91e8beeaa6a"
             ],
             "version": "==1.3.0"
-        },
-        "six": {
-            "hashes": [
-                "sha256:30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259",
-                "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"
-            ],
-            "version": "==1.15.0"
         },
         "sqlparse": {
             "hashes": [

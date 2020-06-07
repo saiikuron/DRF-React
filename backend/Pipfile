@@ -9,7 +9,7 @@ verify_ssl = true
 django = "==2.2.13"
 djangorestframework = "==3.10.3"
 django-cors-headers = "==3.3.0"
-django-rest-auth = "==0.9.5"
+dj-rest-auth = "==1.0.7"
 django-allauth = "==0.42.0"
 djangorestframework-simplejwt = "==4.4.0"
 
