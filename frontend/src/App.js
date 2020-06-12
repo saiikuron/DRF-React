@@ -1,11 +1,10 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./styles/main.css";
 
 function App() {
   return (
-    <div className="App p-8 bg-gray-900 h-screen">
-      <p className="font-bold text-white text-4xl">Hello World!</p>
+    <div className="h-screen p-8 bg-gray-900 App">
+      <p className="text-4xl font-bold text-white">Hello World!</p>
     </div>
   );
 }

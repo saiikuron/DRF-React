@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'dfr-_2u3j#cg1kbn*cuumwwqc0xee%rv6&@pql^%zu0cxwzfjg'
+SECRET_KEY = 'fl8@5zkvdns-4a^a%m@6botho-pg4h(b@kh-j2jk(&vox2d2g@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -46,11 +46,11 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'dj_rest_auth.registration',
     'corsheaders',
 
     # local
-
+    'accounts',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -152,6 +152,11 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
 }
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer'
+}
+
 
 SWAGGER_SETTINGS = {
     'LOGIN_URL': 'login',
