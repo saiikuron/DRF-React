@@ -11,6 +11,16 @@ export function Register() {
   const [first_name, setFirstname] = useState();
   const [last_name, setLastname] = useState();
 
+  const data = {
+    username,
+    email,
+    password1,
+    password2,
+    first_name,
+    last_name,
+  };
+  console.log(data);
+
   const registerUser = async () => {
     const data = {
       username,

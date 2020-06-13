@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, setTimeout } from "react";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -8,7 +8,7 @@ export function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const registerUser = async () => {
+  const loginUser = () => {
     const data = {
       username,
       email,
@@ -25,7 +25,7 @@ export function Login() {
   };
   return (
     <div className="container">
-      <Form onSubmit={registerUser}>
+      <Form onSubmit={loginUser}>
         <Form.Group controlId="formRegisterUser">
           <Form.Label>Username</Form.Label>
           <Form.Control
@@ -43,7 +43,6 @@ export function Login() {
           <Form.Label>Password</Form.Label>
           <Form.Control
             placeholder="Enter your password"
-            type="password"
             onChange={(evt) => setPassword(evt.target.value)}
           />
         </Form.Group>
