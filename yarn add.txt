@@ -1,0 +1,3 @@
+yarn add axios react-router-dom swr
+
+yarn add bootstrap react-bootstrap

@@ -1,10 +1,16 @@
 import React from "react";
-import "./styles/main.css";
+import Path from "./components/Path";
+import Header from "./components/Header";
+import "./styles/bootstrap.min.css";
 
 function App() {
   return (
-    <div className="h-screen p-8 bg-gray-900 App">
-      <p className="text-4xl font-bold text-white">Hello World!</p>
+    <div>
+      <Header />
+      <div className="container">
+        <br />
+        <Path />
+      </div>
     </div>
   );
 }
