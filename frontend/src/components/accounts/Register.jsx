@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
 
 export function Register() {
   const [username, setUsername] = useState();
@@ -11,17 +12,10 @@ export function Register() {
   const [first_name, setFirstname] = useState();
   const [last_name, setLastname] = useState();
 
-  const data = {
-    username,
-    email,
-    password1,
-    password2,
-    first_name,
-    last_name,
-  };
-  console.log(data);
+  let history = useHistory();
 
-  const registerUser = async () => {
+  const registerUser = async (e) => {
+    e.preventDefault();
     const data = {
       username,
       email,
@@ -30,10 +24,12 @@ export function Register() {
       first_name,
       last_name,
     };
-    axios
+    await axios
       .post("http://localhost:8000/auth/register/", data)
       .then((res) => {
-        console.log(res);
+        if (res.request.status === 201) {
+          history.push("/login/");
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -41,6 +37,7 @@ export function Register() {
   };
   return (
     <div className="container">
+      <h2>Register</h2>
       <Form onSubmit={registerUser}>
         <Form.Group controlId="formRegisterUser">
           <Form.Label>Username</Form.Label>
