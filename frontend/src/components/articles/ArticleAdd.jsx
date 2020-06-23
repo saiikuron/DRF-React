@@ -13,6 +13,7 @@ function ArticleAdd() {
 
   return (
     <div className="AddArticle">
+      <h3>Add Article</h3>
       <Form onSubmit={createArticle}>
         <Form.Group controlId="formAddArticleTitle">
           <Form.Label>Title</Form.Label>

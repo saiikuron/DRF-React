@@ -7,5 +7,5 @@ router.register('', ModelViewSet, basename="article")
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('/<int:id>', include(router.urls)),
+    path('<int:id>', include(router.urls)),
 ]
