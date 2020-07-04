@@ -1,5 +1,8 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from dj_rest_auth.registration.serializers import RegisterSerializer
+
+UserModel = get_user_model()
 
 
 class CustomRegisterSerializer(RegisterSerializer):
@@ -16,3 +19,14 @@ class CustomRegisterSerializer(RegisterSerializer):
             'first_name': self.validated_data.get('first_name', ''),
             'last_name': self.validated_data.get('last_name', '')
         }
+
+
+class PublicProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserModel
+        fields = [
+            "id",
+            "first_name",
+            "last_name",
+            "username",
+        ]

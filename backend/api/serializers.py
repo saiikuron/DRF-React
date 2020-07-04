@@ -1,9 +1,10 @@
 from rest_framework import serializers
+from accounts.serializers import PublicProfileSerializer
 from .models import Article
 
 
 class ArticleSerializer(serializers.ModelSerializer):
-    user = serializers.PrimaryKeyRelatedField(
+    user = PublicProfileSerializer(
         read_only=True, default=serializers.CurrentUserDefault())
 
     class Meta:
