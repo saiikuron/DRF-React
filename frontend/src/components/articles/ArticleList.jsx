@@ -2,7 +2,6 @@ import React from "react";
 import useSWR from "swr";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
 import ArticleAdd from "./ArticleAdd";
 
 const ArticlesEndpoint = "http://localhost:8000/api/";
@@ -27,7 +26,9 @@ export const ArticleList = () => {
               <p>
                 {article.id} -{" "}
                 <Link to={`/${article.id}`}>{article.title}</Link>, {""}
-                {article.user}
+                <Link to={`/user/${article.user.id}`}>
+                  {article.user.username}
+                </Link>
               </p>
             </div>
           );

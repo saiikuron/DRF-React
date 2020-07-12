@@ -11,7 +11,6 @@ urlpatterns = [
     path('auth/register/',
          include('dj_rest_auth.registration.urls')),
     path('account/', include('allauth.urls')),
-    re_path(r'^accounts/profile/$', RedirectView.as_view(url='/',
-                                                         permanent=True), name='profile-redirect'),
     path('api/', include('api.urls')),
+    path('accounts/', include('accounts.urls')),
 ]
