@@ -4,7 +4,7 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 
 export const Profile = ({ match }) => {
-  const AccountsEndpoint = `http://localhost:8000/api/${match.params.id}/`;
+  const AccountsEndpoint = `http://localhost:8000/accounts/${match.params.id}/`;
   const getUserProfile = () => {
     return axios.get(AccountsEndpoint).then((res) => {
       return res.data;
@@ -30,7 +30,7 @@ export const Profile = ({ match }) => {
             </div>
           );
         })}
-        <Button href='/'>Go back</Button>
+      <Button href="/">Go back</Button>
     </div>
   );
 };
