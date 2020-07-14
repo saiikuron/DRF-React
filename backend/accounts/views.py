@@ -11,7 +11,7 @@ UserModel = get_user_model()
 class UserDetailsView(viewsets.ModelViewSet):
     serializer_class = UserDetailsSerializer
     queryset = UserModel.objects.all()
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         user = self.request.user

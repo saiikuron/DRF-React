@@ -1,35 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import useSWR from "swr";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 
 export const Profile = ({ match }) => {
   const AccountsEndpoint = `http://localhost:8000/accounts/${match.params.id}/`;
+
+  const [profile, setProfile] = useState({});
+
   const getUserProfile = () => {
     return axios.get(AccountsEndpoint).then((res) => {
+      setProfile(res.data);
       return res.data;
     });
   };
-  const { data: profile } = useSWR(AccountsEndpoint, getUserProfile);
-
+  const { data: user } = useSWR(AccountsEndpoint, getUserProfile);
+  console.log(user);
   return (
-    <div className="ArticleList">
-      {profile &&
-        profile.map((profile) => {
-          return (
-            <div key={profile.id}>
-              <h1>
-                {profile.username}
-                {""}
-              </h1>
-              <p>
-                {profile.first_name}
-                {""}
-                {profile.last_name}
-              </p>
-            </div>
-          );
-        })}
+    <div className="user-profile">
+      <div key={profile.pk}>
+        <h3>{profile.username}</h3>
+        <p>
+          {profile.first_name}
+          {""} {profile.last_name}
+        </p>
+      </div>
       <Button href="/">Go back</Button>
     </div>
   );
