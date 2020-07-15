@@ -22,7 +22,7 @@ export function Login() {
       .then((res) => {
         if (res.request.status === 200) {
           setUser(res.data.user);
-          // history.push("/");
+          history.push("/");
         }
       })
       .catch((err) => {

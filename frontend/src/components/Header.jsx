@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+import axios from "axios";
+import { UserContext } from "./accounts/UserContext";
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 
 function Header() {
+  const { user, setUser } = useContext(UserContext);
+
+  const logoutUser = async () => {
+    await axios
+      .post("http://127.0.0.1:8000/auth/logout/")
+      .then((res) => {
+        setUser(null);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <Navbar expand="lg" variant="dark" bg="primary">
       <Navbar.Brand href="/">
@@ -18,7 +33,11 @@ function Header() {
       <Navbar.Collapse id="navbarColor01">
         <Nav className="mr-auto">
           <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/login/">Login</Nav.Link>
+          {user ? (
+            <button onClick={logoutUser}>Logout</button>
+          ) : (
+            <Nav.Link href="/login/">Login</Nav.Link>
+          )}
           <Nav.Link href="/register/">Register</Nav.Link>
         </Nav>
         <Form inline>

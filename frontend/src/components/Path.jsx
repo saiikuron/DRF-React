@@ -10,12 +10,12 @@ import { UserContext } from "./accounts/UserContext";
 function Path() {
   const [user, setUser] = useState(null);
 
-  const providerValue = useMemo(() => ({ user, setUser }), [user, setUser]);
+  const loggedUser = useMemo(() => ({ user, setUser }), [user, setUser]);
 
   return (
     <Router>
       <div>
-        <UserContext.Provider value={providerValue}>
+        <UserContext.Provider value={loggedUser}>
           <Switch>
             <Route exact path="/login/" exact component={Login} />
             <Route exact path="/register/" exact component={Register} />
