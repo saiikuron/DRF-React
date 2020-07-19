@@ -5,25 +5,18 @@ import { ArticleUpdate } from "./articles/ArticleUpdate";
 import { Register } from "./accounts/Register";
 import { Login } from "./accounts/Login";
 import { Profile } from "./accounts/Profile";
-import { UserContext } from "./accounts/UserContext";
 
 function Path() {
-  const [user, setUser] = useState(null);
-
-  const loggedUser = useMemo(() => ({ user, setUser }), [user, setUser]);
-
   return (
     <Router>
       <div>
-        <UserContext.Provider value={loggedUser}>
-          <Switch>
-            <Route exact path="/login/" exact component={Login} />
-            <Route exact path="/register/" exact component={Register} />
-            <Route exact path="/user/:id/" exact component={Profile} />
-            <Route exact path="/" exact component={ArticleList} />
-            <Route exact path="/:id/" exact component={ArticleUpdate} />
-          </Switch>
-        </UserContext.Provider>
+        <Switch>
+          <Route exact path="/login/" exact component={Login} />
+          <Route exact path="/register/" exact component={Register} />
+          <Route exact path="/user/:id/" exact component={Profile} />
+          <Route exact path="/" exact component={ArticleList} />
+          <Route exact path="/:id/" exact component={ArticleUpdate} />
+        </Switch>
       </div>
     </Router>
   );
