@@ -1,8 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, createContext } from "react";
 import axios from "axios";
 import { useForm } from "../customHooks/useForm";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "./UserContext";
+import { TokenContext } from "./TokenContext";
 
 export function Login() {
   const [data, setData] = useForm({
@@ -12,6 +13,7 @@ export function Login() {
   });
 
   const { user, setUser } = useContext(UserContext);
+  const { token, setToken } = useContext(TokenContext);
 
   let history = useHistory();
 
@@ -22,7 +24,8 @@ export function Login() {
       .then((res) => {
         if (res.request.status === 200) {
           setUser(res.data.user);
-          console.log(res.data.refresh_token);
+          setToken(res.data.access_token);
+          localStorage.setItem("refresh_token", res.data.refresh_token);
           history.push("/");
         }
       })

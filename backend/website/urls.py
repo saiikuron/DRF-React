@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include, re_path
+from rest_framework_simplejwt.views import TokenRefreshView
 from django.views.generic import RedirectView, TemplateView
 
 urlpatterns = [
@@ -8,8 +9,8 @@ urlpatterns = [
             TemplateView.as_view(template_name="password_reset_confirm.html"),
             name='password_reset_confirm'),
     path('auth/', include('dj_rest_auth.urls')),
-    path('auth/register/',
-         include('dj_rest_auth.registration.urls')),
+    path('auth/register/', include('dj_rest_auth.registration.urls')),
+    path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('account/', include('allauth.urls')),
     path('api/', include('api.urls')),
     path('accounts/', include('accounts.urls')),

@@ -11,6 +11,7 @@ function Header() {
       .post("http://127.0.0.1:8000/auth/logout/")
       .then((res) => {
         setUser(null);
+        localStorage.removeItem("refresh_token");
       })
       .catch((err) => {
         console.log(err);
