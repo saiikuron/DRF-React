@@ -25,7 +25,7 @@ export function Login() {
         if (res.request.status === 200) {
           setUser(res.data.user);
           setToken(res.data.access_token);
-          localStorage.setItem("refresh_token", res.data.refresh_token);
+          localStorage.setItem("refresh_token", res.data.refresh_token); // Has to be changed in a cookie
           history.push("/");
         }
       })

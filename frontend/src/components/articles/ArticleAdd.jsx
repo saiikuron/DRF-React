@@ -12,6 +12,7 @@ function ArticleAdd() {
 
   const createArticle = async () => {
     const data = { title, user };
+    console.log(data);
     if (token) {
       axios
         .post(`http://localhost:8000/api/`, data, {
@@ -19,9 +20,17 @@ function ArticleAdd() {
             Authorization: "Bearer " + token,
           },
         })
-        .then((res) => {});
+        .then((res) => {})
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
+
+  useEffect(() => {
+    const data = { title, user };
+    console.log("add token", token);
+  }, [title]);
 
   return (
     <div className="AddArticle">

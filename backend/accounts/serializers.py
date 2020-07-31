@@ -25,7 +25,7 @@ class PublicProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
         fields = [
-            "id",
+            "pk",
             "first_name",
             "last_name",
             "username",

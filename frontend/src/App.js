@@ -13,21 +13,24 @@ function App() {
   const loggedUser = useMemo(() => ({ user, setUser }), [user, setUser]);
   const UserToken = useMemo(() => ({ token, setToken }), [token, setToken]);
 
-  const updateToken = async (refresh_token) => {
-    await axios.post("auth/token/refresh/", refresh_token).then((res) => {
-      localStorage.removeItem("refresh_token");
-      localStorage.setItem("refresh_token", res.data.refresh_token);
-      setToken(res.data.access_token);
-    });
+  const updateToken = async () => {
+    const refresh_token = { refresh: localStorage.getItem("refresh_token") }; // to update to cookies
+    await axios
+      .post("http://localhost:8000/token/refresh/", refresh_token)
+      .then((res) => {
+        setToken(res.data.access);
+        console.log(res.data.access);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   useEffect(() => {
     const data = localStorage.getItem("loggedUser");
-    const refresh_token = localStorage.getItem("refresh_token");
-
     if (data) {
       setUser(JSON.parse(data));
-      updateToken(refresh_token);
+      updateToken();
     }
   }, []);
 
@@ -43,6 +46,7 @@ function App() {
           <div className="container">
             <br />
             <Path />
+            <button onClick={updateToken}>Token</button>
           </div>
         </TokenContext.Provider>
       </UserContext.Provider>

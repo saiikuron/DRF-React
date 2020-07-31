@@ -26,7 +26,7 @@ export const ArticleList = () => {
               <p>
                 {article.id} -{" "}
                 <Link to={`/${article.id}`}>{article.title}</Link>, {""}
-                <Link to={`/user/${article.user.id}`}>
+                <Link to={`/user/${article.user.pk}`}>
                   {article.user.username}
                 </Link>
               </p>
